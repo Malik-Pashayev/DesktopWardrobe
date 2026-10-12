@@ -2,13 +2,19 @@
 
 **Hang your desktop clutter on a clothesline.** Like Fences, but fun.
 
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%2010%20%2F%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Malik-Pashayev/DesktopWardrobe/releases/latest/download/DesktopWardrobe.exe)
+
 Push the mouse against the top of the screen and a rope drops down with your folders pegged to it by wooden clothespins. Drag things up to hang them and they leave your desktop. Pull them back down whenever you need them.
 
 ![Desktop Wardrobe demo](docs/demo.gif)
 
 ## Download
 
-Grab **`DesktopWardrobe.exe`** from the [latest release](../../releases/latest) and run it. There's nothing to install. It runs on Windows 10 and 11 (x64) and lives in the system tray.
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%2010%20%2F%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Malik-Pashayev/DesktopWardrobe/releases/latest/download/DesktopWardrobe.exe)
+
+Click the button to download **`DesktopWardrobe.exe`**, then double-click it. There's nothing to install. It runs on Windows 10 and 11 (x64) and lives in the system tray. To have it start with Windows, right-click the tray icon → **Start with Windows**.
+
+All versions are on the [releases page](../../releases).
 
 > **"Windows protected your PC"?** The app isn't code-signed yet, so SmartScreen warns about it. Click **More info → Run anyway**. The source is all here if you'd rather [build it yourself](#build-it-yourself).
 
