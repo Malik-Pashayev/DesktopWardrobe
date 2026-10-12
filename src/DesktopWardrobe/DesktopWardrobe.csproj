@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>DesktopWardrobe</AssemblyName>
+    <RootNamespace>DesktopWardrobe</RootNamespace>
+    <Version>0.1.0</Version>
+    <Product>Desktop Wardrobe</Product>
+    <Description>Hang your desktop folders on a coat rack at the top of the screen.</Description>
+  </PropertyGroup>
+
+</Project>

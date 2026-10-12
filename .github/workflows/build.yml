@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      # Runs anywhere, no .NET install needed.
+      - name: Publish self-contained
+        run: dotnet publish src/DesktopWardrobe -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o publish/full
+
+      # Tiny build for people who already have the .NET 9 Desktop Runtime.
+      - name: Publish framework-dependent
+        run: dotnet publish src/DesktopWardrobe -c Release -r win-x64 --no-self-contained -p:PublishSingleFile=true -o publish/small
+
+      - name: Collect
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Copy-Item publish/full/DesktopWardrobe.exe dist/DesktopWardrobe.exe
+          Copy-Item publish/small/DesktopWardrobe.exe dist/DesktopWardrobe-small.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DesktopWardrobe
+          path: dist/*.exe
+
+      - name: Create release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.exe
+          body: |
+            **Download `DesktopWardrobe.exe`** and run it (Windows 10/11 x64, nothing to install).
+            `DesktopWardrobe-small.exe` is the same app in ~200 KB for people who have the .NET 9 Desktop Runtime.
+
+            Windows may show "Windows protected your PC" because the app isn't code-signed yet: click **More info → Run anyway**.
